@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Ma page d'accueil{% endblock %}
+{% block content %}
+    <h1>Bienvenue sur mon blog</h1>
+    <p>La date actuelle ést : {{ date }}</p>
+    <p>
+      {% for article in dernier_articles %}
+      <h3>{{article.titre}}</h3>
+      <p>{{article.contenu|truncatewords_html:80}}</p>
+      <p><a href="{% url "blog.views.lire" article.id %}">Lire la suite</a>
+      {% empty %}
+      Aucun article.
+      {% endfor %}
+    </p>
+{% endblock %}
