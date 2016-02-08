@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('adminCesitech.views',
+urlpatterns = patterns('administration.views',
     url(r'^index$', 'index'),
 )

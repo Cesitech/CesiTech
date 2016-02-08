@@ -6,7 +6,7 @@ from blog.forms import ContactForm
 #-*- coding: utf-8 -*-
 
 def admin(request):
-    return render(request, 'cesitech/admin.html', {'date':datetime.now()})
+    return render(request, 'composant/index.html', {'date':datetime.now()})
 
 def home(request):
     article = Article.objects.all()
