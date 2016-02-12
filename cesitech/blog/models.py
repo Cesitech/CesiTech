@@ -1,18 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Article(models.Model):
-    titre = models.CharField(max_length=100, verbose_name="Titre")
-    contenu = models.TextField(null=False, verbose_name="Contenu")
-    auteur = models.ForeignKey('Membre')
-    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de creation")
-    categorie = models.ForeignKey('Categorie')
-    def __str__(self):
-        return self.titre
-
-    def __unicode__(self):
-        return self.titre
-
 class Categorie(models.Model):
     nom = models.CharField(max_length=30)
     def __str__(self):
@@ -39,6 +27,7 @@ class Membre(models.Model):
     password = models.CharField(max_length=100, verbose_name="Mot de Passe")
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de creation")
     rang = models.ForeignKey('Rang')
+    team = models.ForeignKey('Team')
     def __str__(self):
         return self.prenom
     def __unicode__(self):
@@ -61,3 +50,21 @@ class Contact(models.Model):
         return self.sujet
     def __unicode__(self):
         return self.sujet
+
+class Project(models.Model):
+    nom = models.CharField(max_length=100, verbose_name="Nom du projet")
+    description = models.TextField(verbose_name="Description")
+    team = models.ForeignKey('Team')
+    date_modifcation = models.DateTimeField(auto_now_add=True, verbose_name="Date modification")
+    def __str__(self):
+        return self.nom
+    def __unicode__(self):
+        return self.nom
+
+class Team(models.Model):
+    nom = models.CharField(max_length=100, verbose_name="Nom de l'equipe")
+    permission = models.CharField(max_length=100, verbose_name="Permission")
+    def __str__(self):
+        return self.nom
+    def __unicode__(self):
+        return self.nom

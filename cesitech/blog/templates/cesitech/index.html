@@ -1,56 +1,203 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
+
+{% load static %}
+
 {% block addTitle %} - News {% endblock %}
-{% block content %}
-    <div class="row">
-      <div class="col-md-8">
-        <div class="row carousel-holder">
-            <div class="col-md-12">
-                <div id="carousel-e" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-e" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-e" data-slide-to="1"></li>
-                        <li data-target="#carousel-e" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                        </div>
-                        <div class="item">
-                            <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                        </div>
-                        <div class="item">
-                            <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                        </div>
-                    </div>
-                    <a class="left carousel-control" href="#carousel-e" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-e" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
+
+{% block globalProject %}
+  <div id="slider" data-section="home">
+    <div class="owl-carousel owl-carousel-fullwidth">
+      {% for project in AllProject %}
+        <div class="item" style="background-image:url({% static 'images/slide_4.jpg' %})">
+          <div class="overlay"></div>
+          <div class="container" style="position: relative;">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 text-center">
+                <div class="fh5co-owl-text-wrap">
+                  <div class="fh5co-owl-text">
+                    <h1 class="fh5co-lead to-animate">{{ project.nom }}</h1>
+                    <h2 class="fh5co-sub-lead to-animate">{{ project.description|truncatewords_html:40 }}</h3>
+                    <p class="to-animate-2"><a href="{% url "blog.views.project" project.id %}#fh5co-about-us" class="btn btn-primary btn-lg">Voir le projet</a></p>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block project %}
+  <div id="fh5co-about-us" data-section="project">
+    <div class="container">
+      <div class="row row-bottom-padded-lg" id="about-us">
+        <div class="col-md-12 section-heading text-center">
+          <h2 class="to-animate">Le fonctionnement d'un Projet</h2>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 to-animate">
+              <h3>Vestibulum bibendum dapibus libero convallis tincidunt. Quisque sed facilisis urna. Morbi et mollis urna. Mauris quis rhoncus mauris. Quisque sit amet aliquet metus. Fusce vitae varius leo. Sed lobortis ultrices justo, vel suscipit justo tempus sit amet. Vestibulum maximus sagittis leo non iaculis. Mauris et dapibus orci. Fusce eu odio viverra, accumsan elit vel, sollicitudin turpis. Aenean gravida ipsum eget ex suscipit condimentum. Praesent egestas et nunc a pharetra. Donec vel nisi placerat, dapibus neque sodales, bibendum odio. Mauris convallis tristique consequat. Vivamus blandit magna in tortor vehicula suscipit. </h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 to-animate">
+          <img src="{% static 'images/une-idee-un-projet.png' %}" class="img-responsive img-rounded">
+        </div>
+        <div class="col-md-5 to-animate">
+          <h2>Par quoi commencer ?</h2>
+          <p>Phasellus nibh ante, laoreet quis risus nec, auctor dictum turpis. Suspendisse congue ligula quis convallis ultricies. Pellentesque semper consectetur turpis in mollis. Maecenas turpis urna, tempus vitae mauris vulputate, egestas luctus mauris. Nullam bibendum feugiat risus, ac rhoncus justo luctus in. Morbi at volutpat orci, at pharetra nisi. Curabitur blandit lorem sed auctor tempus. Mauris pretium mi vitae dictum dignissim. Vestibulum vitae imperdiet dolor. Vestibulum eleifend a eros quis fringilla. Nam mollis, odio nec fermentum elementum, lectus odio aliquam purus, sed laoreet lacus felis et justo. Nulla nec quam sed elit tincidunt accumsan. Quisque porta tristique aliquet. Maecenas pharetra interdum purus, quis luctus ante venenatis et. Mauris ut tempor lacus. </p>
+
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <div class="panel-title">Allô Lucie</div>
-
+      <div class="row row-bottom-padded-lg" id="about-us">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6 to-animate">
+              <h2>Un crayon, une feuille ?</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida varius malesuada. Vivamus eu rutrum ipsum. Proin eu felis eget turpis vulputate lacinia nec nec justo. Sed massa nulla, egestas ut laoreet non, iaculis porttitor ligula. Aliquam consequat risus non felis euismod eleifend. In dui nisi, efficitur nec suscipit ac, tempor ut lacus. Integer sed ipsum in sem placerat blandit eget id arcu. Pellentesque ut ante justo. Morbi eget lorem sodales, maximus risus vel, euismod nibh. Pellentesque euismod bibendum ipsum, eget ornare massa gravida ac. </p>
+            </div>
+            <div class="col-md-6 to-animate">
+              <img src="{% static 'images/papier-crayon.jpg' %}" class="img-responsive img-rounded" />
+            </div>
           </div>
-          <div class="panel-body">
-
-          </div>
+          <p><a href="#" class="btn btn-primary" data-nav-section="team">Rencontrer l'équipe</a></p>
         </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <div class="panel-title">Les actualités :</div>
+      </div>
 
-          </div>
-          <div class="panel-body">
-
+      <div class="row" id="team" data-section="team">
+        <div class="col-md-12 section-heading text-center to-animate">
+          <h2>Team</h2>
+        </div>
+        <div class="col-md-12">
+          <div class="row row-bottom-padded-lg">
+            {% for personn in team %}
+            <div class="col-md-4 text-center to-animate">
+              <div class="person">
+                <img src="{% static 'images/person2.jpg' %}" class="img-responsive img-rounded" alt="Person">
+                <h3 class="name">{{personn.prenom}} {{personn.nom}}</h3>
+                <div class="position">Web Developer</div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                <ul class="social social-circle">
+                  <li><a href="#"><i class="icon-twitter"></i></a></li>
+                  <li><a href="mailto:cesitech@viacesi.fr"><i class="icon-envelope"></i></a></li>
+                  <li><a href="#"><i class="icon-instagram"></i></a></li>
+                  <li><a href="#"><i class="icon-github"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
+  </div>
+{% endblock %}
+
+{% block calendar %}
+  <div id="fh5co-our-services" data-section="calendar">
+    <div class="container">
+      <div class="row row-bottom-padded-lg" id="about-us">
+        <div class="col-md-12 section-heading text-center">
+          <h2 class="to-animate">L'agenda</h2>
+            <div id="timeline">
+            	<div class="dot" id="one">
+            		<span></span>
+            		<date>1280</date>
+            	</div>
+              <div class="dot" id="two">
+            		<span></span>
+            		<date>1649</date>
+            	</div>
+              <div class="dot" id="three">
+            		<span></span>
+            		<date>1831</date>
+            	</div>
+              <div class="dot" id="four">
+            		<span></span>
+            		<date>1992</date>
+            	</div>
+              <div class="inside"></div>
+            </div>
+
+            <!-- Modals -->
+
+            <article class='modal one'>
+              <date>26/06 - 1280</date>
+              <h2>Yo les gars</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+
+            <article class='modal two'>
+              <date>08/09 - 1649</date>
+              <h2>Salut les louzeurs</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+
+            <article class='modal three'>
+              <date>21/07 - 1831</date>
+              <h2>Eat 'em all !</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+
+            <article class='modal four'>
+              <date>03/02 - 1992</date>
+              <h2>Mais pourquoi?</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+        </div>
+      </div>
+    </div>
+  </div>
+{%  endblock %}
+
+{% block contact %}
+  {% if envoi %}<div class="alert alert-success" role="alert"><center><strong>Votre message a bien été envoyé !</strong></center></div>{% endif %}
+  <form action="{% url "blog.views.home" %}"data-nav-section="contact"  method="post">
+      {% csrf_token %}
+      {{ contact.as_p }}
+      <center><input type="submit" value="Envoyer le message" /></center>
+  </form>
+{% endblock %}
+
+{% block end %}
+ <script>
+ $('.dot:nth-child(1)').click(function(){
+   $('.inside').animate({
+     'width' : '20%'
+   }, 500);
+ });
+ $('.dot:nth-child(2)').click(function(){
+   $('.inside').animate({
+     'width' : '40%'
+   }, 500);
+ });
+ $('.dot:nth-child(3)').click(function(){
+   $('.inside').animate({
+     'width' : '60%'
+   }, 500);
+ });
+ $('.dot:nth-child(4)').click(function(){
+   $('.inside').animate({
+     'width' : '80%'
+   }, 500);
+ });
+ if ($('#switch1').not(':checked')){
+   $('.modal').wrap('<div class="mask"></div>')
+     $('.mask').click(function(){
+       $(this).fadeOut(300);
+       $('.mask article').animate({
+         'top' : '-100%'
+       }, 300)
+     });
+
+     $('.dot').click(function(){
+       var modal = $(this).attr('id');
+       $('.mask').has('article.' + modal).fadeIn(300);
+       $('.mask article.' + modal).fadeIn(0).animate({
+         'top' : '10%'
+       }, 300);
+     });
+ }
+</script>
 {% endblock %}

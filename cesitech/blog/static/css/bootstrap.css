@@ -122,7 +122,7 @@ pre {
   overflow: auto;
 }
 
-code,
+code,h
 kbd,
 pre,
 samp {
@@ -280,10 +280,7 @@ th {
   h2,
   h3 {
     page-break-after: avoid;
-  }
-
-  .navbar {
-    display: none;
+  }h
   }
 
   .btn > .caret,
@@ -555,7 +552,7 @@ th {
 }
 
 .glyphicon-align-left:before {
-  content: "\e052";
+  content: "\e052";h
 }
 
 .glyphicon-align-center:before {
@@ -1422,7 +1419,7 @@ a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-
+h
 figure {
   margin: 0;
 }
@@ -1685,24 +1682,7 @@ a.text-danger:focus {
 }
 
 .bg-primary {
-  color: #fff;
-}
-
-.bg-primary {
-  background-color: #337ab7;
-}
-
-a.bg-primary:hover,
-a.bg-primary:focus {
-  background-color: #286090;
-}
-
-.bg-success {
-  background-color: #dff0d8;
-}
-
-a.bg-success:hover,
-a.bg-success:focus {
+  color: #fff;h
   background-color: #c1e2b3;
 }
 
@@ -2079,7 +2059,7 @@ pre code {
 .col-xs-pull-8 {
   right: 66.66667%;
 }
-
+h
 .col-xs-pull-9 {
   right: 75%;
 }
@@ -2678,7 +2658,6 @@ pre code {
   .col-lg-pull-1 {
     right: 8.33333%;
   }
-
   .col-lg-pull-2 {
     right: 16.66667%;
   }
@@ -5127,8 +5106,9 @@ tbody.collapse.in {
   border-color: #101010;
 }
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #090909;
+  
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {

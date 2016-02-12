@@ -3,7 +3,7 @@ from blog.models import *
 # Register your models here.
 
 
-class ArticleAdmin(admin.ModelAdmin):
+"""class ArticleAdmin(admin.ModelAdmin):
     list_display   = ('titre', 'auteur', 'date')
     list_filter    = ('auteur','categorie',)
     date_hierarchy = 'date'
@@ -16,7 +16,7 @@ class ArticleAdmin(admin.ModelAdmin):
         else:
             return text
     apercu_contenu.short_description = 'Apercu du contenu'
-
+"""
 class NewAdmin(admin.ModelAdmin):
     list_display   = ('titre', 'auteur', 'date')
     list_filter    = ('auteur','categorie',)
@@ -49,5 +49,6 @@ admin.site.register(Categorie)
 admin.site.register(Membre)
 admin.site.register(New, NewAdmin)
 admin.site.register(Rang)
+admin.site.register(Project)
+admin.site.register(Team)
 admin.site.register(Contact, ContactAdmin)
-admin.site.register(Article, ArticleAdmin)

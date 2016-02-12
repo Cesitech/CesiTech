@@ -1,0 +1,179 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block addTitle %} - News {% endblock %}
+
+{% block globalProject %}
+  <div id="slider" data-section="home">
+    <div class="owl-carousel owl-carousel-fullwidth">
+      {% for p in AllProject %}
+        <div class="item" style="background-image:url({% static 'images/slide_4.jpg' %})">
+          <div class="overlay"></div>
+          <div class="container" style="position: relative;">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 text-center">
+                <div class="fh5co-owl-text-wrap">
+                  <div class="fh5co-owl-text">
+                    <h1 class="fh5co-lead to-animate">{{ p.nom }}</h1>
+                    <h2 class="fh5co-sub-lead to-animate">{{ p.description|truncatewords_html:40 }}</h3>
+                    <p class="to-animate-2"><a href="{% url "blog.views.project" p.id %}#fh5co-about-us" class="btn btn-primary btn-lg" data-nav-section="project">Voir le projet</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block project %}
+  <div id="fh5co-about-us" data-section="project">
+    <div class="container">
+      <div class="row row-bottom-padded-lg" id="about-us">
+        <div class="col-md-12 section-heading text-center">
+          <h2 class="to-animate">{{project}}</h2>
+        </div>
+        <div class="col-md-12 to-animate">
+          {{project.description}}
+        </div>
+      </div>
+
+      <div class="row" id="team" data-section="team">
+        <div class="col-md-12 section-heading text-center to-animate">
+          <h2>Team</h2>
+        </div>
+        <div class="col-md-12">
+          <div class="row row-bottom-padded-lg">
+            {% for personn in team %}
+            <div class="col-md-4 text-center to-animate">
+              <div class="person">
+                <img src="{% static 'images/person2.jpg' %}" class="img-responsive img-rounded" alt="Person">
+                <h3 class="name">{{personn.prenom}} {{personn.nom}}</h3>
+                <div class="position">Web Developer</div>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                <ul class="social social-circle">
+                  <li><a href="#"><i class="icon-twitter"></i></a></li>
+                  <li><a href="mailto:cesitech@viacesi.fr"><i class="icon-envelope"></i></a></li>
+                  <li><a href="#"><i class="icon-instagram"></i></a></li>
+                  <li><a href="#"><i class="icon-github"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block calendar %}
+  <div id="fh5co-our-services" data-section="calendar">
+    <div class="container">
+      <div class="row row-bottom-padded-lg" id="about-us">
+        <div class="col-md-12 section-heading text-center">
+          <h2 class="to-animate">L'agenda</h2>
+            <div id="timeline">
+            	<div class="dot" id="one">
+            		<span></span>
+            		<date>1280</date>
+            	</div>
+              <div class="dot" id="two">
+            		<span></span>
+            		<date>1649</date>
+            	</div>
+              <div class="dot" id="three">
+            		<span></span>
+            		<date>1831</date>
+            	</div>
+              <div class="dot" id="four">
+            		<span></span>
+            		<date>1992</date>
+            	</div>
+              <div class="inside"></div>
+            </div>
+
+            <!-- Modals -->
+
+            <article class='modal one'>
+              <date>26/06 - 1280</date>
+              <h2>Yo les gars</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+
+            <article class='modal two'>
+              <date>08/09 - 1649</date>
+              <h2>Salut les louzeurs</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+
+            <article class='modal three'>
+              <date>21/07 - 1831</date>
+              <h2>Eat 'em all !</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+
+            <article class='modal four'>
+              <date>03/02 - 1992</date>
+              <h2>Mais pourquoi?</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
+            </article>
+        </div>
+      </div>
+    </div>
+  </div>
+{%  endblock %}
+
+{% block contact %}
+  {% if envoi %}<div class="alert alert-success" role="alert"><center><strong>Votre message a bien été envoyé !</strong></center></div>{% endif %}
+  <form action="{% url "blog.views.home" %}"data-nav-section="contact"  method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <center><input type="submit" value="Envoyer le message" /></center>
+  </form>
+{% endblock %}
+
+{% block end %}
+ <script>
+ $('.dot:nth-child(1)').click(function(){
+   $('.inside').animate({
+     'width' : '20%'
+   }, 500);
+ });
+ $('.dot:nth-child(2)').click(function(){
+   $('.inside').animate({
+     'width' : '40%'
+   }, 500);
+ });
+ $('.dot:nth-child(3)').click(function(){
+   $('.inside').animate({
+     'width' : '60%'
+   }, 500);
+ });
+ $('.dot:nth-child(4)').click(function(){
+   $('.inside').animate({
+     'width' : '80%'
+   }, 500);
+ });
+ if ($('#switch1').not(':checked')){
+   $('.modal').wrap('<div class="mask"></div>')
+     $('.mask').click(function(){
+       $(this).fadeOut(300);
+       $('.mask article').animate({
+         'top' : '-100%'
+       }, 300)
+     });
+
+     $('.dot').click(function(){
+       var modal = $(this).attr('id');
+       $('.mask').has('article.' + modal).fadeIn(300);
+       $('.mask article.' + modal).fadeIn(0).animate({
+         'top' : '10%'
+       }, 300);
+     });
+ }
+</script>
+{% endblock %}
