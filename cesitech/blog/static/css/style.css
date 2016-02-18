@@ -5,12 +5,6 @@
   font-weight: normal;
   font-style: normal;
 }
-/* =======================================================
-*
-* 	Template Style
-*	Edit this section
-*
-* ======================================================= */
 body {
   font-family: "Source Sans Pro", Arial, sans-serif;
   font-weight: 400;
@@ -230,8 +224,6 @@ h1, h2, h3, h4, h5, h6 {
 .section-heading {
   float: left;
   width: 100%;
-  padding-bottom: 50px;
-  margin-bottom: 50px;
   clear: both;
 }
 .section-heading h2 {
@@ -280,7 +272,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #fh5co-our-services,
-#fh5co-about-us,
+#ct-news,
 #fh5co-features,
 #fh5co-testimonials,
 #fh5co-pricing,
@@ -289,7 +281,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media screen and (max-width: 480px) {
   #fh5co-our-services,
-  #fh5co-about-us,
+  #ct-news,
   #fh5co-features,
   #fh5co-testimonials,
   #fh5co-pricing,
@@ -750,7 +742,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #footer {
-  padding: 50px 0;
+  padding: 15px 0;
   color: #7f7f7f;
 }
 #footer .copyright {
@@ -1183,7 +1175,6 @@ div#timeline .inside {
   left: 0;
 }
 div#timeline .dot {
-  z-index: 99;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
   width: 40px;
@@ -1216,11 +1207,12 @@ div#timeline .dot:hover {
 }
 div#timeline .dot date {
   font-family: roboto;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   display: block;
-  position: relative;
-  top: -60px;
-  text-align: center;
+  text-align: left;
+  width: 160px;
+  box-shadow: -3px 1px rgb(50,50,50);
+  padding-left: 5px;
 }
 div#timeline .dot span {
   display: inline-block;
@@ -1305,4 +1297,39 @@ form>p>input{
 }
 form>p>label {
     width : 25%;
+}
+#myCarousel .carousel-caption {
+  left:0;
+	right:0;
+	bottom:0;
+	text-align:left;
+	padding:10px;
+	background:rgba(0,0,0,0.6);
+	text-shadow:none;
+}
+
+#myCarousel .list-group {
+	position:absolute;
+	top:0;
+	right:0;
+}
+#myCarousel .list-group-item {
+	border-radius:0px;
+	cursor:pointer;
+}
+#myCarousel .list-group .active {
+	background-color:#eee;
+  color:rgba(50, 50, 50, 0.8);
+}
+#myCarousel .list-group .active h4{
+  color: rgba(0, 0, 0, 1);
+}
+
+@media (min-width: 992px) {
+	#myCarousel {padding-right:33.3333%;}
+	#myCarousel .carousel-controls {display:none;}
+}
+@media (max-width: 991px) {
+	.carousel-caption p,
+	#myCarousel .list-group {display:none;}
 }

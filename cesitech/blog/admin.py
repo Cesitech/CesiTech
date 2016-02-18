@@ -2,24 +2,9 @@ from django.contrib import admin
 from blog.models import *
 # Register your models here.
 
-
-"""class ArticleAdmin(admin.ModelAdmin):
-    list_display   = ('titre', 'auteur', 'date')
-    list_filter    = ('auteur','categorie',)
-    date_hierarchy = 'date'
-    ordering       = ('date', )
-    search_fields  = ('titre', 'contenu')
-    def apercu_contenu(self, article):
-        text = article.contenu[0:40]
-        if len(article.contenu) > 40:
-            return text+"..."
-        else:
-            return text
-    apercu_contenu.short_description = 'Apercu du contenu'
-"""
 class NewAdmin(admin.ModelAdmin):
     list_display   = ('titre', 'auteur', 'date')
-    list_filter    = ('auteur','categorie',)
+    list_filter    = ('auteur',)
     date_hierarchy = 'date'
     ordering       = ('date', )
     search_fields  = ('titre', 'contenu')
@@ -45,10 +30,9 @@ class ContactAdmin(admin.ModelAdmin):
             return new
     apercu_contenu.short_description = 'Apercu du contenu'
 
-admin.site.register(Categorie)
 admin.site.register(Membre)
 admin.site.register(New, NewAdmin)
-admin.site.register(Rang)
 admin.site.register(Project)
 admin.site.register(Team)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Calendar)

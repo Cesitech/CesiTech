@@ -2,8 +2,6 @@
 
 {% load static %}
 
-{% block addTitle %} - News {% endblock %}
-
 {% block globalProject %}
   <div id="slider" data-section="home">
     <div class="owl-carousel owl-carousel-fullwidth">
@@ -17,7 +15,7 @@
                   <div class="fh5co-owl-text">
                     <h1 class="fh5co-lead to-animate">{{ project.nom }}</h1>
                     <h2 class="fh5co-sub-lead to-animate">{{ project.description|truncatewords_html:40 }}</h3>
-                    <p class="to-animate-2"><a href="{% url "blog.views.project" project.id %}#fh5co-about-us" class="btn btn-primary btn-lg">Voir le projet</a></p>
+                    <p class="to-animate-2"><a href="{% url "blog.views.project" project.id %}"class="btn btn-primary btn-lg">Voir le projet</a></p>
                   </div>
                 </div>
               </div>
@@ -29,8 +27,50 @@
   </div>
 {% endblock %}
 
+{% block news %}
+  <div id="fh5co-our-services" data-section="news">
+    <div class="container">
+      <div class="row row-bottom-padded-lg">
+        <div class="col-md-12 section-heading text-center">
+          <h2 class="to-animate">Les nouvelles</h2>
+        </div>
+      </div>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+          <div class="item active">
+            <img src="/{{ news_first.avatar }}">
+             <div class="carousel-caption">
+              <h4><a href="#">{{news_first.titre}}</a></h4>
+              <p>{{ news_first.contenu|truncatewords_html:50 }}</p>
+            </div>
+          </div><!-- End Item -->
+            {% for n in news %}
+            <div class="item">
+              <img src="/{{ n.avatar }}">
+               <div class="carousel-caption">
+                <h4><a href="#">{{n.titre}}</a></h4>
+                <p>{{ n.contenu|truncatewords_html:50 }}</p>
+              </div>
+            </div><!-- End Item -->
+            {% endfor %}
+          </div><!-- End Carousel Inner -->
+
+
+        <ul class="list-group col-sm-4">
+          <li data-target="#myCarousel" class="list-group-item active"><h4>{{news_first.titre}}</h4>{{news_first.contenu|truncatewords_html:10}}</li>
+          {% for n in news %}
+            <li data-target="#myCarousel" class="list-group-item"><h4>{{n.titre}}</h4>{{n.contenu|truncatewords_html:10}}</li>
+          {% endfor %}
+        </ul>
+
+        </div><!-- End Carousel -->
+    </div>
+  </div>
+{% endblock %}
+
 {% block project %}
-  <div id="fh5co-about-us" data-section="project">
+  <div id="ct-news" data-section="project">
     <div class="container">
       <div class="row row-bottom-padded-lg" id="about-us">
         <div class="col-md-12 section-heading text-center">
@@ -53,7 +93,7 @@
       <div class="row row-bottom-padded-lg" id="about-us">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-6 to-animate">
+            <div class="col-md-6 to-animate" style="padding-right:10px">
               <h2>Un crayon, une feuille ?</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida varius malesuada. Vivamus eu rutrum ipsum. Proin eu felis eget turpis vulputate lacinia nec nec justo. Sed massa nulla, egestas ut laoreet non, iaculis porttitor ligula. Aliquam consequat risus non felis euismod eleifend. In dui nisi, efficitur nec suscipit ac, tempor ut lacus. Integer sed ipsum in sem placerat blandit eget id arcu. Pellentesque ut ante justo. Morbi eget lorem sodales, maximus risus vel, euismod nibh. Pellentesque euismod bibendum ipsum, eget ornare massa gravida ac. </p>
             </div>
@@ -64,8 +104,11 @@
           <p><a href="#" class="btn btn-primary" data-nav-section="team">Rencontrer l'équipe</a></p>
         </div>
       </div>
-
-      <div class="row" id="team" data-section="team">
+    </div>
+  </div>
+  <div id="fh5co-our-services" data-section="team">
+    <div class="container">
+      <div class="row">
         <div class="col-md-12 section-heading text-center to-animate">
           <h2>Team</h2>
         </div>
@@ -74,10 +117,10 @@
             {% for personn in team %}
             <div class="col-md-4 text-center to-animate">
               <div class="person">
-                <img src="{% static 'images/person2.jpg' %}" class="img-responsive img-rounded" alt="Person">
+                <img src="/{{ personn.avatar }}" class="img-responsive img-rounded">
                 <h3 class="name">{{personn.prenom}} {{personn.nom}}</h3>
-                <div class="position">Web Developer</div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                <div class="position">{{personn.fonction}}</div>
+                <p>{{personn.description}}</p>
                 <ul class="social social-circle">
                   <li><a href="#"><i class="icon-twitter"></i></a></li>
                   <li><a href="mailto:cesitech@viacesi.fr"><i class="icon-envelope"></i></a></li>
@@ -95,56 +138,31 @@
 {% endblock %}
 
 {% block calendar %}
-  <div id="fh5co-our-services" data-section="calendar">
+  <div id="fh5co-features" data-section="calendar">
     <div class="container">
-      <div class="row row-bottom-padded-lg" id="about-us">
-        <div class="col-md-12 section-heading text-center">
-          <h2 class="to-animate">L'agenda</h2>
-            <div id="timeline">
-            	<div class="dot" id="one">
-            		<span></span>
-            		<date>1280</date>
-            	</div>
-              <div class="dot" id="two">
-            		<span></span>
-            		<date>1649</date>
-            	</div>
-              <div class="dot" id="three">
-            		<span></span>
-            		<date>1831</date>
-            	</div>
-              <div class="dot" id="four">
-            		<span></span>
-            		<date>1992</date>
-            	</div>
-              <div class="inside"></div>
-            </div>
+      <div class="row">
+        <div class="col-md-12 section-heading text-center to-animate">
+          <h2>L'agenda</h2>
+        </div>
+        <div class="col-md-12">
+          <div id="timeline">
+            {% for date in calendar%}
+          	<div class="dot" id="{{date.name}}">
+          		<span></span>
+          		<date><strong>[{{date.projet_id.nom}}]</strong> - {{date.name}}<br>{{date.date}}</date>
+          	</div>
+            {% endfor%}
+            <div class="inside"></div>
+          </div>
+          <!-- Modals -->
 
-            <!-- Modals -->
-
-            <article class='modal one'>
-              <date>26/06 - 1280</date>
-              <h2>Yo les gars</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-            </article>
-
-            <article class='modal two'>
-              <date>08/09 - 1649</date>
-              <h2>Salut les louzeurs</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-            </article>
-
-            <article class='modal three'>
-              <date>21/07 - 1831</date>
-              <h2>Eat 'em all !</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-            </article>
-
-            <article class='modal four'>
-              <date>03/02 - 1992</date>
-              <h2>Mais pourquoi?</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-            </article>
+            {% for date in calendar%}
+              <article class='modal {{date.name}}'>
+                <date>{{date.date}}</date>
+                <h2>{{date.projet_id.nom}} - {{date.name}}</h2>
+                <p>{{date.description}}</p>
+              </article>
+            {% endfor%}
         </div>
       </div>
     </div>
@@ -152,12 +170,28 @@
 {%  endblock %}
 
 {% block contact %}
-  {% if envoi %}<div class="alert alert-success" role="alert"><center><strong>Votre message a bien été envoyé !</strong></center></div>{% endif %}
-  <form action="{% url "blog.views.home" %}"data-nav-section="contact"  method="post">
-      {% csrf_token %}
-      {{ contact.as_p }}
-      <center><input type="submit" value="Envoyer le message" /></center>
-  </form>
+
+<div id="fh5co-press" data-section="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 section-heading text-center">
+        <h2 class="single-animate animate-press-1">Nous contacter</h2>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">
+            <h3>
+              {% if envoi %}<div class="alert alert-success" role="alert"><center><strong>Votre message a bien été envoyé !</strong></center></div>{% endif %}
+              <form action="{% url "blog.views.home" %}" data-nav-section="contact"  method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <center><input type="submit" value="Envoyer le message" /></center>
+              </form>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block end %}
@@ -199,5 +233,39 @@
        }, 300);
      });
  }
+
+var boxheight = $('.carousel-inner').height();
+var itemlength = $('.item').length;
+var triggerheight = Math.round(boxheight/itemlength+1);
+$('.list-group-item').height(triggerheight);
+
+var idNew = 1;
+var clickEvent = false;
+$('#myCarousel').carousel({
+interval:   6000
+}).on('click', '.list-group li', function() {
+  clickEvent = true;
+
+  $('li.list-group-item').removeClass('active');
+  $('ul.list-group').removeClass('active');
+  idNew = ($(this).index());
+  console.log(idNew);
+  $('ul.list-group-item:nth-child('+(idNew)+')').addClass('active');
+  $(this).addClass('active');
+
+}).on('slid.bs.carousel', function(e) {
+if(!clickEvent) {
+  var count = $('ul.list-group').children().length-1;
+  $('li.list-group-item:nth-child('+idNew+')').removeClass('active');
+  if(count<idNew) {
+    $('li.list-group-item').first().addClass('active');
+    idNew = 1
+  } else {
+    idNew++;
+    $('li.list-group-item:nth-child('+idNew+')').addClass('active');
+  }
+}
+clickEvent = false;
+});
 </script>
 {% endblock %}
