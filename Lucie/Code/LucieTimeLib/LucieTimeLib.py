@@ -14,26 +14,10 @@ Librairie des éléments temporels du robot "Lucie". Permet de connaitre l'heure
 !!!!!!!!!! ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!                                              !! --> D'ailleurs il faudrait écrire une fonction qui
 !! L'heure de référence est celle du système!   !!     mette à l'heure le système dans ce fichier, si
-!! Il faut donc que le système soit à l'heure!  !!     quelqu'un s'en sent.. Moi je ne connais pas les API d'horloge.
+!! Il faut donc que le système soit à l'heure!  !!     quelqu'un s'en sent.. Moi je ne connais pas les API d'horloge réseau.
 !! ça éviterait de raconter n'importe quoi...   !!                    -- Guillaume
 !!                               ;)             !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
-=== CHANGELOG ===================
-
-
-DATE       CONTRIBUTEUR              NOTES
-================================================================================================================
-23/01/16   Guillaume TORREILLES       - Création du script
-                                      - Création des fonctions : __init__,
-                                                                 get_date_time,
-                                                                 time_natural_language,
-                                                                 date_natural_language,
-                                                                 date_and_time_natural_language.
------------------------------------------------------------------------------------------------------------------
 
 
 """
