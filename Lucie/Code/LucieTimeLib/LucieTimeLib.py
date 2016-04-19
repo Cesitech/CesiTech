@@ -43,6 +43,13 @@ class Timer():
     """
     def __init__(self):
         pass
+    
+    def start(self):
+        # Relever le temps dans une variable d'heure initiale
+        self.startTime = datetime.datetime.now()
+    
+    def read(self):
+        return datetime.datetime.now() - self.startTime
 
 
 # Définitions
@@ -85,6 +92,11 @@ def test_lib():
     Tester la librairie.
     Personnaliser la fonction pour tester des éléments en particuliers.
     """
+    
+    print "création d'un chrono & démarrage\n\n"
+    monChrono = Timer()
+    monChrono.start()
+    
     print "time_natural_language()"
     print time_natural_language()
     
@@ -107,6 +119,9 @@ def test_lib():
     
     print "day_natural_language()"
     print day_natural_language()
+
+    print "\n\nlecture chrono : "
+    print(monChrono.read())
 
 
 ###  T E S T  ###
