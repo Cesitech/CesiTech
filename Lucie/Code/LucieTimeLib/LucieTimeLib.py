@@ -27,6 +27,26 @@ import datetime
 mois  = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]
 jours = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"]
 
+# Classes
+class Timer():
+    """
+    TIMER
+    
+    Classe d'un objet Chronomètre.
+    
+    Exemple :
+    
+    monChrono = Timer()
+    monChrono.start()
+    ...
+    monChrono.time() -> temps en secondes depuis start() (int)
+    """
+    def __init__(self):
+        pass
+
+
+# Définitions
+
 def __init__():
     global mois,jours
     # Creer les listes globales
