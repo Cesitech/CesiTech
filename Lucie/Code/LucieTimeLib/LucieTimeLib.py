@@ -39,7 +39,7 @@ class Timer():
     monChrono = Timer()
     monChrono.start()
     ...
-    monChrono.time() -> temps en secondes depuis start() (int)
+    monChrono.time() -> temps en secondes depuis start() 
     """
     def __init__(self):
         pass
